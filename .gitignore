@@ -1,0 +1,27 @@
+# Local empty copies only. This file is a safeguard, not a security guarantee.
+.env
+.env.*
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+*.pem
+*.key
+*.p12
+*.pfx
+*.log
+*.pyc
+.DS_Store
+__pycache__/
+.pytest_cache/
+.venv/
+node_modules/
+dist/
+runtime/
+local_runtime/
+.local/
+uploads/
+generated/
+output/
+data/

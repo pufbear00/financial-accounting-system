@@ -1,0 +1,135 @@
+/* Flat Design 全局样式 —— 无阴影、纯色块、扁平边框、悬停缩放 */
+
+:root {
+  --flat-primary: #3b82f6;
+  --flat-secondary: #10b981;
+  --flat-accent: #f59e0b;
+  --flat-bg: #f3f4f6;
+  --flat-fg: #111827;
+  --flat-border: #e5e7eb;
+}
+
+body {
+  margin: 0;
+  background: var(--flat-bg);
+  color: var(--flat-fg);
+  font-family: "Outfit", -apple-system, BlinkMacSystemFont, "PingFang SC",
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 标题：紧字距、粗字重（Flat Design 招牌） */
+h1, h2, h3, h4, h5,
+.ant-typography,
+.ant-card-head-title,
+.ant-statistic-title {
+  letter-spacing: -0.01em;
+}
+.ant-card-head-title {
+  font-weight: 700 !important;
+}
+
+/* ===== 彻底移除所有阴影，改用扁平边框构建层次 ===== */
+.ant-card,
+.ant-btn,
+.ant-modal-content,
+.ant-dropdown-menu,
+.ant-select-dropdown,
+.ant-picker-dropdown .ant-picker-panel-container,
+.ant-table-wrapper .ant-table,
+.ant-popover-inner,
+.ant-notification-notice,
+.ant-message-notice-content {
+  box-shadow: none !important;
+}
+
+/* ===== 卡片：纯色块 + 扁平边框 + 悬停缩放 ===== */
+.ant-card {
+  border: 1px solid var(--flat-border);
+  border-radius: 8px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.ant-card-hoverable:hover,
+.ant-card:hover {
+  transform: scale(1.02);
+  border-color: var(--flat-primary);
+}
+/* 表格 / 图表型卡片不做缩放，避免抖动 */
+.ant-card:has(.ant-table):hover,
+.ant-card:has(.g2-chart):hover,
+.ant-card:has(canvas):hover {
+  transform: none;
+  border-color: var(--flat-primary);
+}
+
+/* ===== 数据卡片：数值用几何粗体 ===== */
+.ant-statistic-content-value,
+.ant-statistic-content {
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+}
+.ant-statistic-title {
+  font-weight: 500;
+  color: #6b7280;
+}
+
+/* ===== 按钮：扁平 + 悬停微缩放/变色，无深度 ===== */
+.ant-btn {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: transform 0.2s ease, background-color 0.2s ease,
+    border-color 0.2s ease, color 0.2s ease;
+}
+.ant-btn-primary:not(:disabled):hover {
+  transform: scale(1.04);
+  background-color: #2563eb !important;
+}
+.ant-btn-default:not(:disabled):hover {
+  transform: scale(1.04);
+}
+
+/* ===== 侧边栏：深色纯色块 ===== */
+.ant-layout-sider {
+  border-right: none;
+}
+
+/* ===== 顶栏：白底 + 粗底边（无阴影） ===== */
+.ant-layout-header {
+  border-bottom: 2px solid var(--flat-border);
+}
+
+/* ===== 表格：扁平表头、清爽分隔线 ===== */
+.ant-table-thead > tr > th {
+  background: var(--flat-bg) !important;
+  font-weight: 600;
+  border-bottom: 2px solid var(--flat-border) !important;
+}
+.ant-table-tbody > tr > td {
+  border-bottom: 1px solid var(--flat-border);
+}
+
+/* ===== 标签 / Tag：扁平实色小圆角 ===== */
+.ant-tag {
+  border-radius: 6px;
+  border: none;
+  font-weight: 500;
+}
+
+/* ===== 输入 / 选择器：扁平边框 ===== */
+.ant-input,
+.ant-input-affix-wrapper,
+.ant-select-selector,
+.ant-picker {
+  border-radius: 8px !important;
+}
+
+/* 尊重减少动画偏好 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+  .ant-card:hover,
+  .ant-btn:hover {
+    transform: none !important;
+  }
+}
